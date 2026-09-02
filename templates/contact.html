@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<ul>
+  {% for err in errors %}
+  <li class="text-danger">{{ err }}</li>
+  {% endfor %}
+</ul>
+
+<h2>Contact Us</h2>
+
+<form method="post" class="p-3 border rounded">
+  <div class="mb-3">
+    <label for="name">Name</label>
+    <input name="name" id="name" class="form-control" value="{{ name }}">
+  </div>
+
+  <div class="mb-3">
+    <label for="email">Email</label>
+    <input name="email" id="email" class="form-control" value="{{ email }}">
+  </div>
+
+  <div class="mb-3">
+    <label for="subject">Subject</label>
+    <select name="subject" id="subject" class="form-control">
+      <option value="">Choose a subject</option>
+      <option {% if subject == "General" %}selected{% endif %}>General</option>
+      <option {% if subject == "Support" %}selected{% endif %}>Support</option>
+      <option {% if subject == "Feedback" %}selected{% endif %}>Feedback</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="message">Message</label>
+    <textarea name="message" id="message" class="form-control">{{ message }}</textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
